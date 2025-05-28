@@ -54,6 +54,9 @@ flutter:
     - assets/bet_dialog/
     - assets/lottie/
     - assets/timer/
+    - assets/images/game_mode/
+
+    
 
   fonts:
     - family: Poppins
