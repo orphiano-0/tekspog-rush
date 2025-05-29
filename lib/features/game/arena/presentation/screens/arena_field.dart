@@ -7,7 +7,9 @@ class ArenaField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: roundActivity(context, 1000, 2900.0, 500)),
+      body: Center(
+        child: RoundActivity(betAmount: 5000, userBalance: 23, totalBet: 400),
+      ),
     );
   }
 }
