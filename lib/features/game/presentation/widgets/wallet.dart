@@ -13,15 +13,15 @@ Widget buildWalletBalanceContainer(BuildContext context, String userId) {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
-      borderRadius: BorderRadius.circular(12),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.1),
-          blurRadius: 16,
-          spreadRadius: 3,
-          offset: const Offset(0, 6),
-        ),
-      ],
+      borderRadius: BorderRadius.circular(8),
+      // boxShadow: [
+      //   BoxShadow(
+      //     color: Colors.grey.withOpacity(.2),
+      //     blurRadius: 16,
+      //     spreadRadius: 3,
+      //     offset: const Offset(0, 6),
+      //   ),
+      // ],
       border: Border.all(color: Colors.grey.shade200),
     ),
     child: Stack(
@@ -41,6 +41,7 @@ Widget buildWalletBalanceContainer(BuildContext context, String userId) {
                 Text(
                   'Wallet Balance',
                   style: TextStyle(
+                    fontFamily: 'Geologica',
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
@@ -52,6 +53,7 @@ Widget buildWalletBalanceContainer(BuildContext context, String userId) {
             Text(
               'User ID: $userId',
               style: const TextStyle(
+                fontFamily: 'Geologica',
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
                 color: Colors.grey,
@@ -61,6 +63,7 @@ Widget buildWalletBalanceContainer(BuildContext context, String userId) {
             const Text(
               'Chips: 29,520.00',
               style: TextStyle(
+                fontFamily: 'Geologica',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

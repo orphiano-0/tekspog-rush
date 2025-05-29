@@ -42,6 +42,7 @@ flutter:
 
   
   assets:
+    - assets/app/
     - assets/images/chips/
     - assets/images/betting_chips/
     - assets/images/
@@ -64,4 +65,6 @@ flutter:
         - asset: assets/fonts/poppins/Poppins-Regular.otf
         - asset: assets/fonts/poppins/Poppins-Italic.otf
           style: italic
-
+    - family: Geologica
+      fonts:
+        - asset: assets/fonts/Geologica/static/Geologica_Auto-Regular.ttf

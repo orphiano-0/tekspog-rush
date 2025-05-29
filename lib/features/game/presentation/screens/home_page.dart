@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tekspogs/features/game/presentation/widgets/wallet.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,10 +8,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('TEKSPOG RUSH'), centerTitle: true),
-      backgroundColor: Color.fromARGB(255, 89, 43, 122),
+      // appBar: AppBar(title: Text('TEKSPOG RUSH'), centerTitle: true),
+      backgroundColor: Colors.white,
       body: Container(
+        padding: const EdgeInsets.only(top: 60),
         decoration: BoxDecoration(
+          color: Colors.black87,
           // gradient: LinearGradient(
           //   colors: [
           //     Color.fromARGB(255, 81, 19, 29),
@@ -22,7 +25,6 @@ class HomePage extends StatelessWidget {
           // ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             buildWalletBalanceContainer(context, '123-023-512'),
             const SizedBox(height: 20),
@@ -32,8 +34,9 @@ class HomePage extends StatelessWidget {
               child: Text(
                 'Battle Mode',
                 style: TextStyle(
-                  color: Colors.white,
+                  fontFamily: 'Geologica',
                   fontSize: 20,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -44,7 +47,7 @@ class HomePage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    print('Arena game yan, ya!');
+                    context.go('/arena');
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -59,7 +62,8 @@ class HomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print('Friendly game lang, ya!');
+                    // print('Friendly game lang, ya!');
+                    context.go('/friendly');
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -81,6 +85,7 @@ class HomePage extends StatelessWidget {
               child: Text(
                 'Limited Offers',
                 style: TextStyle(
+                  fontFamily: 'Geologica',
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

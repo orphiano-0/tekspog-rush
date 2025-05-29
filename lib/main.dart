@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tekspogs/features/game/presentation/screens/home_page.dart';
+import 'package:tekspogs/config/router/app_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,6 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp.router(routerConfig: router);
   }
 }
