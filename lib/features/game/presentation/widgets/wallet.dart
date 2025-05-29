@@ -13,7 +13,7 @@ Widget buildWalletBalanceContainer(BuildContext context, String userId) {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(10),
       // boxShadow: [
       //   BoxShadow(
       //     color: Colors.grey.withOpacity(.2),

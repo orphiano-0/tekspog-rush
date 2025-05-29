@@ -43,6 +43,8 @@ flutter:
   
   assets:
     - assets/app/
+    - assets/app/game_mode/
+    - assets/app/game_results/
     - assets/images/chips/
     - assets/images/betting_chips/
     - assets/images/
