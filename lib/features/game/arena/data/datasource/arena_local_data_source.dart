@@ -12,5 +12,13 @@ class ArenaLocalDataSource implements ArenaRepository {
   Future<void> placeBet(String userId, String pog, double betAmount) async {}
 
   @override
+  Future<void> getRoundActivity(
+    String userId,
+    String pog,
+    double betAmount,
+    double userBalance,
+  ) async {}
+
+  @override
   Future<void> saveRound(Arena arena) async {}
 }

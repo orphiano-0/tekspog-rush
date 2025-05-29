@@ -6,6 +6,7 @@ class ArenaModel extends Arena {
     required String userId,
     required String pog,
     required double betAmount,
+    required double userBalance,
     required String whoWon,
     required DateTime roundDate,
   }) : super(
@@ -13,6 +14,7 @@ class ArenaModel extends Arena {
          userId: userId,
          pog: pog,
          betAmount: betAmount,
+         userBalance: userBalance,
          whoWon: whoWon,
          roundDate: roundDate,
        );
@@ -23,6 +25,7 @@ class ArenaModel extends Arena {
       userId: json['userId'],
       pog: json['pog'],
       betAmount: json['betAmount'],
+      userBalance: json['userBalance'],
       whoWon: json['whoWon'],
       roundDate: json['roundDate'],
     );
@@ -34,6 +37,7 @@ class ArenaModel extends Arena {
       'userId': userId,
       'pog': pog,
       'betAmount': betAmount,
+      'userBalance': userBalance,
       'whoWon': whoWon,
       'roundDate': roundDate,
     };

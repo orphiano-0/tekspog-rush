@@ -22,6 +22,7 @@ class ArenaRepositoryImpl implements ArenaRepository {
         userId: arena.userId,
         pog: arena.pog,
         betAmount: arena.betAmount,
+        userBalance: arena.userBalance,
         whoWon: arena.whoWon,
         roundDate: arena.roundDate,
       ),
@@ -30,4 +31,12 @@ class ArenaRepositoryImpl implements ArenaRepository {
 
   @override
   Future<void> placeBet(String userId, String pog, double betAmount) async {}
+
+  @override
+  Future<void> getRoundActivity(
+    String userId,
+    String pog,
+    double betAmount,
+    double userBalance,
+  ) async {}
 }
