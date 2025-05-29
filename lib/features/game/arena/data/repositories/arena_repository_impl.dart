@@ -33,10 +33,10 @@ class ArenaRepositoryImpl implements ArenaRepository {
   Future<void> placeBet(String userId, String pog, double betAmount) async {}
 
   @override
-  Future<void> getRoundActivity(
-    String userId,
-    String pog,
-    double betAmount,
-    double userBalance,
-  ) async {}
+  Future<void> getRoundActivity({
+    required String userId,
+    required String pog,
+    required double betAmount,
+    required double userBalance,
+  }) async {}
 }

@@ -12,10 +12,10 @@ class GetRoundActivity {
     double userBalance,
   ) async {
     return await arenaRepository.getRoundActivity(
-      userId,
-      pog,
-      betAmount,
-      userBalance,
+      userId: userId,
+      pog: pog,
+      betAmount: betAmount,
+      userBalance: userBalance,
     );
   }
 }

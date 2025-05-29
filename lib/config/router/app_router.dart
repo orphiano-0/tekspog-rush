@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tekspogs/features/game/presentation/screens/arena_field.dart';
+import 'package:tekspogs/features/game/arena/presentation/screens/arena_field.dart';
 import 'package:tekspogs/features/game/presentation/screens/friendly_field.dart';
 import 'package:tekspogs/features/game/presentation/screens/home_page.dart';
 

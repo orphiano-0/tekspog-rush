@@ -1,7 +1,7 @@
 class Arena {
   final String roundId;
   final String userId;
-  final String pog;
+  final String pog; //pogPath
   final double betAmount;
   final double userBalance;
   final String whoWon;
