@@ -12,13 +12,15 @@ class ArenaLocalDataSource implements ArenaRepository {
   Future<void> placeBet(String userId, String pog, double betAmount) async {}
 
   @override
-  Future<void> getRoundActivity(
-    String userId,
-    String pog,
-    double betAmount,
-    double userBalance,
-  ) async {}
+  Future<void> getRoundActivity({
+    required String userId,
+    required String pog,
+    required double betAmount,
+    required double userBalance,
+  }) async {}
 
   @override
   Future<void> saveRound(Arena arena) async {}
 }
+
+// should include whether the pog is facing front or back here
