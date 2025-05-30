@@ -9,18 +9,18 @@ class ArenaRepositoryImpl implements ArenaRepository {
   ArenaRepositoryImpl({required this.arenaLocalDataSource});
 
   @override
-  Future<List<Arena>> getArenaHistory() async {
+  Future<List<ArenaEntity>> getArenaHistory() async {
     final arenaModels = await arenaLocalDataSource.getArenaHistory();
     return arenaModels;
   }
 
   @override
-  Future<void> saveRound(Arena arena) async {
+  Future<void> saveRound(ArenaEntity arena) async {
     await arenaLocalDataSource.saveRound(
       ArenaModel(
         roundId: arena.roundId,
         userId: arena.userId,
-        pog: arena.pog,
+        pogPath: arena.pogPath,
         betAmount: arena.betAmount,
         userBalance: arena.userBalance,
         whoWon: arena.whoWon,
@@ -30,13 +30,25 @@ class ArenaRepositoryImpl implements ArenaRepository {
   }
 
   @override
-  Future<void> placeBet(String userId, String pog, double betAmount) async {}
+  Future<void> placeBet(
+    String userId,
+    String pogPath,
+    double betAmount,
+  ) async {}
 
   @override
   Future<void> getRoundActivity({
     required String userId,
-    required String pog,
+    required String pogPath,
     required double betAmount,
     required double userBalance,
-  }) async {}
+  }) async {
+    final currentRoundModel = await arenaLocalDataSource.getRoundActivity(
+      userId: userId,
+      pogPath: pogPath,
+      betAmount: betAmount,
+      userBalance: userBalance,
+    );
+    return currentRoundModel;
+  }
 }

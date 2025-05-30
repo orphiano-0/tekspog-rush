@@ -6,7 +6,7 @@ class ArenaBet {
 
   ArenaBet(this.arenaRepository);
 
-  Future<List<Arena>> execute() async {
+  Future<List<ArenaEntity>> execute() async {
     return await arenaRepository.getArenaHistory();
   }
 }

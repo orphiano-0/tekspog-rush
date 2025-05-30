@@ -5,7 +5,7 @@ class PlaceBet {
 
   PlaceBet(this.arenaRepository);
 
-  Future<void> execute(String userId, String pog, double betAmount) async {
-    return await arenaRepository.placeBet(userId, pog, betAmount);
+  Future<void> execute(String userId, String pogPath, double betAmount) async {
+    return await arenaRepository.placeBet(userId, pogPath, betAmount);
   }
 }

@@ -5,15 +5,15 @@ class GetRoundActivity {
 
   GetRoundActivity(this.arenaRepository);
 
-  Future<void> execute(
+  Future<void> call(
     String userId,
-    String pog,
+    String pogPath,
     double betAmount,
     double userBalance,
   ) async {
     return await arenaRepository.getRoundActivity(
       userId: userId,
-      pog: pog,
+      pogPath: pogPath,
       betAmount: betAmount,
       userBalance: userBalance,
     );

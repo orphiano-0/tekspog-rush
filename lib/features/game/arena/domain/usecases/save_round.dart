@@ -6,7 +6,7 @@ class SaveRound {
 
   SaveRound(this.arenaRepository);
 
-  Future<void> execute(Arena arena) async {
+  Future<void> execute(ArenaEntity arena) async {
     return await arenaRepository.saveRound(arena);
   }
 }

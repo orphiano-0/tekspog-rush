@@ -1,16 +1,16 @@
-class Arena {
+class ArenaEntity {
   final String roundId;
   final String userId;
-  final String pog; //pogPath
+  final String pogPath;
   final double betAmount;
   final double userBalance;
   final String whoWon;
   final DateTime roundDate;
 
-  Arena({
+  ArenaEntity({
     required this.roundId,
     required this.userId,
-    required this.pog,
+    required this.pogPath,
     required this.betAmount,
     required this.userBalance,
     required this.whoWon,
