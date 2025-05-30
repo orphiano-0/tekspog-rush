@@ -1,45 +1,22 @@
-import 'package:tekspogs/features/game/arena/domain/entity/arena.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 
-class ArenaModel extends Arena {
+part 'arena_model.g.dart';
+
+@JsonSerializable()
+class ArenaModel extends ArenaEntity {
   ArenaModel({
-    required String roundId,
-    required String userId,
-    required String pog,
-    required double betAmount,
-    required double userBalance,
-    required String whoWon,
-    required DateTime roundDate,
-  }) : super(
-         roundId: roundId,
-         userId: userId,
-         pog: pog,
-         betAmount: betAmount,
-         userBalance: userBalance,
-         whoWon: whoWon,
-         roundDate: roundDate,
-       );
+    required super.roundId,
+    required super.userId,
+    required super.pogPath,
+    required super.betAmount,
+    required super.userBalance,
+    required super.whoWon,
+    required super.roundDate,
+  });
 
-  factory ArenaModel.fromJson(Map<String, dynamic> json) {
-    return ArenaModel(
-      roundId: json['roundId'],
-      userId: json['userId'],
-      pog: json['pog'],
-      betAmount: json['betAmount'],
-      userBalance: json['userBalance'],
-      whoWon: json['whoWon'],
-      roundDate: json['roundDate'],
-    );
-  }
+  factory ArenaModel.fromJson(Map<String, dynamic> json) =>
+      _$ArenaModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'roundId': roundId,
-      'userId': userId,
-      'pog': pog,
-      'betAmount': betAmount,
-      'userBalance': userBalance,
-      'whoWon': whoWon,
-      'roundDate': roundDate,
-    };
-  }
+  Map<String, dynamic> toJson() => _$ArenaModelToJson(this);
 }

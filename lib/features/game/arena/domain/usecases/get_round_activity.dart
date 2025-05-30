@@ -1,21 +1,12 @@
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
 
-class GetRoundActivity {
+class GetRoundActivityUsecase {
   final ArenaRepository arenaRepository;
 
-  GetRoundActivity(this.arenaRepository);
+  GetRoundActivityUsecase(this.arenaRepository);
 
-  Future<void> call(
-    String userId,
-    String pogPath,
-    double betAmount,
-    double userBalance,
-  ) async {
-    return await arenaRepository.getRoundActivity(
-      userId: userId,
-      pogPath: pogPath,
-      betAmount: betAmount,
-      userBalance: userBalance,
-    );
+  Future<List<ArenaEntity>> call() async {
+    return await arenaRepository.getRoundActivity();
   }
 }

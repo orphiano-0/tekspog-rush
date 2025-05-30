@@ -1,5 +1,33 @@
-abstract class AnimationEvent {}
+import 'package:equatable/equatable.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 
-class StartAnimation extends AnimationEvent {}
+abstract class ArenaEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
-class StopAnimation extends AnimationEvent {}
+class PlaceBet extends ArenaEvent {
+  final String pogPath;
+
+  PlaceBet(this.pogPath);
+
+  @override
+  List<Object> get props => [pogPath];
+}
+
+class ChooseBettingChips extends ArenaEvent {
+  final String chipPath;
+
+  ChooseBettingChips(this.chipPath);
+
+  @override
+  List<Object> get props => [chipPath];
+}
+
+class StartRoundArena extends ArenaEvent {
+  final ArenaEntity arenaEntity;
+
+  StartRoundArena(this.arenaEntity);
+}
+
+class EndRoundArena extends ArenaEvent {}

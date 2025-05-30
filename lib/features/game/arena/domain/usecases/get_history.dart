@@ -1,10 +1,10 @@
-import 'package:tekspogs/features/game/arena/domain/entity/arena.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
 
-class ArenaBet {
+class GetHistoryUsecase {
   final ArenaRepository arenaRepository;
 
-  ArenaBet(this.arenaRepository);
+  GetHistoryUsecase(this.arenaRepository);
 
   Future<List<ArenaEntity>> execute() async {
     return await arenaRepository.getArenaHistory();

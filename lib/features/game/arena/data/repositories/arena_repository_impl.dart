@@ -1,6 +1,6 @@
 import 'package:tekspogs/features/game/arena/data/datasource/arena_local_data_source.dart';
 import 'package:tekspogs/features/game/arena/data/models/arena_model.dart';
-import 'package:tekspogs/features/game/arena/domain/entity/arena.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
 
 class ArenaRepositoryImpl implements ArenaRepository {
@@ -37,18 +37,8 @@ class ArenaRepositoryImpl implements ArenaRepository {
   ) async {}
 
   @override
-  Future<void> getRoundActivity({
-    required String userId,
-    required String pogPath,
-    required double betAmount,
-    required double userBalance,
-  }) async {
-    final currentRoundModel = await arenaLocalDataSource.getRoundActivity(
-      userId: userId,
-      pogPath: pogPath,
-      betAmount: betAmount,
-      userBalance: userBalance,
-    );
+  Future<List<ArenaEntity>> getRoundActivity() async {
+    final currentRoundModel = await arenaLocalDataSource.getRoundActivity();
     return currentRoundModel;
   }
 }
