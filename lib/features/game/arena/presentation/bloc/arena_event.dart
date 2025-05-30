@@ -7,9 +7,11 @@ abstract class ArenaEvent extends Equatable {
 }
 
 class PlaceBet extends ArenaEvent {
+  final String userId;
   final String pogPath;
+  final double betAmount;
 
-  PlaceBet(this.pogPath);
+  PlaceBet(this.userId, this.pogPath, this.betAmount);
 
   @override
   List<Object> get props => [pogPath];
@@ -28,6 +30,18 @@ class StartRoundArena extends ArenaEvent {
   final ArenaEntity arenaEntity;
 
   StartRoundArena(this.arenaEntity);
+
+  @override
+  List<Object> get props => [arenaEntity];
 }
 
 class EndRoundArena extends ArenaEvent {}
+
+class FetchArenaHistory extends ArenaEvent {
+  final List<ArenaEntity> arenaHistory;
+
+  FetchArenaHistory(this.arenaHistory);
+
+  @override
+  List<Object> get props => [arenaHistory];
+}

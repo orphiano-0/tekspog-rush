@@ -23,6 +23,7 @@ class ArenaBloc extends Bloc<ArenaEvent, ArenaState> {
     });
 
     on<StartRoundArena>(_loadedArenaActivity);
+    on<FetchArenaHistory>(_loadArenaHistory);
   }
 
   Future<void> _loadedArenaActivity(
@@ -37,6 +38,37 @@ class ArenaBloc extends Bloc<ArenaEvent, ArenaState> {
       emit(ArenaActivity(arenaActivity));
     } catch (e) {
       ArenaFailure(e.toString());
+    }
+  }
+
+  Future<void> _loadArenaHistory(
+    FetchArenaHistory event,
+    Emitter<ArenaState> emit,
+  ) async {
+    emit(ArenaLoading());
+
+    try {
+      final arenaHistory = await getHistoryUsecase.call();
+
+      emit(ArenaHistoryLoaded(arenaHistory));
+    } catch (e) {
+      ArenaFailure(e.toString());
+    }
+  }
+
+  Future<void> _placeBet(PlaceBet event, Emitter<ArenaState> emit) async {
+    emit(ArenaLoading());
+
+    try {
+      final placeBet = await placeBetUsecase.execute(
+        event.userId,
+        event.pogPath,
+        event.betAmount,
+      );
+
+      emit(ArenaRoundStarted());
+    } catch (e) {
+      emit(ArenaFailure(e.toString()));
     }
   }
 }

@@ -6,7 +6,7 @@ class GetHistoryUsecase {
 
   GetHistoryUsecase(this.arenaRepository);
 
-  Future<List<ArenaEntity>> execute() async {
+  Future<List<ArenaEntity>> call() async {
     return await arenaRepository.getArenaHistory();
   }
 }

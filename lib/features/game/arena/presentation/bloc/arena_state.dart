@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
+import 'package:tekspogs/features/game/arena/presentation/bloc/arena_event.dart';
 
 abstract class ArenaState extends Equatable {
   @override
@@ -10,7 +11,13 @@ class ArenaInitial extends ArenaState {}
 
 class ArenaLoading extends ArenaState {}
 
-class ArenaHistory extends ArenaState {}
+class ArenaHistoryLoading extends ArenaState {}
+
+class ArenaHistoryLoaded extends ArenaState {
+  final List<ArenaEntity> arenaHistory;
+
+  ArenaHistoryLoaded(this.arenaHistory);
+}
 
 class ArenaActivity extends ArenaState {
   final List<ArenaEntity> arena;
@@ -18,7 +25,11 @@ class ArenaActivity extends ArenaState {
   ArenaActivity(this.arena);
 }
 
-class ArenaRoundStarted extends ArenaState {}
+class ArenaRoundStarted extends ArenaState {
+  // final PlaceBet placeBet;
+
+  // ArenaRoundStarted(this.placeBet);
+}
 
 class ArenaRoundEnded extends ArenaState {}
 
