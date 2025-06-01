@@ -18,12 +18,10 @@ class ArenaBloc extends Bloc<ArenaEvent, ArenaState> {
     required this.placeBetUsecase,
     required this.saveRoundUsecase,
   }) : super(ArenaInitial()) {
-    on<PlaceBet>((event, emit) {
-      emit(ArenaRoundStarted());
-    });
-
     on<StartRoundArena>(_loadedArenaActivity);
     on<FetchArenaHistory>(_loadArenaHistory);
+
+    on<PlaceBet>(_placeBet);
   }
 
   Future<void> _loadedArenaActivity(
@@ -66,7 +64,7 @@ class ArenaBloc extends Bloc<ArenaEvent, ArenaState> {
         event.betAmount,
       );
 
-      emit(ArenaRoundStarted());
+      emit(ArenaRoundStarted(placeBet));
     } catch (e) {
       emit(ArenaFailure(e.toString()));
     }

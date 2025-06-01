@@ -1,8 +1,13 @@
 import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/bet_entity.dart';
 
 abstract class ArenaRepository {
   Future<List<ArenaEntity>> getArenaHistory();
-  Future<void> placeBet(String userId, String pogPath, double betAmount);
+  Future<BetEntity> placeBet({
+    required String userId,
+    required String pogPath,
+    required double betAmount,
+  });
   Future<List<ArenaEntity>> getRoundActivity();
   Future<void> saveRound(ArenaEntity arena);
 }
