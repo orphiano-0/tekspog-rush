@@ -19,9 +19,10 @@ class ArenaBloc extends Bloc<ArenaEvent, ArenaState> {
     required this.saveRoundUsecase,
   }) : super(ArenaInitial()) {
     on<StartRoundArena>(_loadedArenaActivity);
-    on<FetchArenaHistory>(_loadArenaHistory);
 
     on<PlaceBet>(_placeBet);
+
+    on<FetchArenaHistory>(_loadArenaHistory);
   }
 
   Future<void> _loadedArenaActivity(

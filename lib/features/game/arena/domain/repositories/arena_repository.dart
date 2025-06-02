@@ -9,5 +9,5 @@ abstract class ArenaRepository {
     required double betAmount,
   });
   Future<List<ArenaEntity>> getRoundActivity();
-  Future<void> saveRound(ArenaEntity arena);
+  Future<ArenaEntity> saveRound(ArenaEntity arena);
 }

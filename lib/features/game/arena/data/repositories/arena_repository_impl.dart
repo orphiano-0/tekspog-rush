@@ -16,18 +16,8 @@ class ArenaRepositoryImpl implements ArenaRepository {
   }
 
   @override
-  Future<void> saveRound(ArenaEntity arena) async {
-    await arenaLocalDataSource.saveRound(
-      ArenaModel(
-        roundId: arena.roundId,
-        userId: arena.userId,
-        pogPath: arena.pogPath,
-        betAmount: arena.betAmount,
-        userBalance: arena.userBalance,
-        whoWon: arena.whoWon,
-        roundDate: arena.roundDate,
-      ),
-    );
+  Future<ArenaEntity> saveRound(ArenaEntity arena) async {
+    await arenaLocalDataSource.saveRound(arena);
   }
 
   @override

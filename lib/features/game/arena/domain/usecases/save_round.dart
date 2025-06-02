@@ -6,7 +6,7 @@ class SaveRoundUsecase {
 
   SaveRoundUsecase(this.arenaRepository);
 
-  Future<void> execute(ArenaEntity arena) async {
-    return await arenaRepository.saveRound(arena);
+  Future<ArenaEntity> execute() async {
+    return await arenaRepository.saveRound();
   }
 }

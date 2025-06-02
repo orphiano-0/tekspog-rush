@@ -1,9 +1,25 @@
 import 'package:tekspogs/features/game/arena/data/models/arena_model.dart';
 import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 import 'package:tekspogs/features/game/arena/domain/entity/bet_entity.dart';
-import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ArenaLocalDataSource implements ArenaRepository {
+abstract class ArenaLocalDataSource {
+  Future<List<ArenaModel>> getArenaHistory();
+  Future<BetEntity> placeBet({
+    required String userId,
+    required String pogPath,
+    required double betAmount,
+  });
+  Future<List<ArenaModel>> getRoundActivity();
+
+  Future<void> saveRound(ArenaEntity arena);
+}
+
+class ArenaLocalDataSourceImpl implements ArenaLocalDataSource {
+  final SharedPreferences sharedPreferences;
+
+  ArenaLocalDataSourceImpl(this.sharedPreferences);
+
   @override
   Future<List<ArenaModel>> getArenaHistory() async {
     return [];
@@ -19,7 +35,7 @@ class ArenaLocalDataSource implements ArenaRepository {
   }
 
   @override
-  Future<List<ArenaEntity>> getRoundActivity() async {
+  Future<List<ArenaModel>> getRoundActivity() async {
     return [];
   }
 

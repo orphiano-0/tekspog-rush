@@ -37,6 +37,12 @@ class StartRoundArena extends ArenaEvent {
 
 class EndRoundArena extends ArenaEvent {}
 
+class SaveRoundActivity extends ArenaEvent {
+  final ArenaEntity arenaEntity;
+
+  SaveRoundActivity(this.arenaEntity);
+}
+
 class FetchArenaHistory extends ArenaEvent {
   final List<ArenaEntity> arenaHistory;
 
