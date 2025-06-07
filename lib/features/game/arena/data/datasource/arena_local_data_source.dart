@@ -1,26 +1,46 @@
 import 'package:tekspogs/features/game/arena/data/models/arena_model.dart';
-import 'package:tekspogs/features/game/arena/domain/entity/arena.dart';
-import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/bet_entity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ArenaLocalDataSource implements ArenaRepository {
+abstract class ArenaLocalDataSource {
+  Future<List<ArenaModel>> getArenaHistory();
+  Future<BetEntity> placeBet({
+    required String userId,
+    required String pogPath,
+    required double betAmount,
+  });
+  Future<List<ArenaModel>> getRoundActivity();
+
+  Future<void> saveRound(ArenaEntity arena);
+}
+
+class ArenaLocalDataSourceImpl implements ArenaLocalDataSource {
+  final SharedPreferences sharedPreferences;
+
+  ArenaLocalDataSourceImpl(this.sharedPreferences);
+
   @override
   Future<List<ArenaModel>> getArenaHistory() async {
     return [];
   }
 
   @override
-  Future<void> placeBet(String userId, String pog, double betAmount) async {}
-
-  @override
-  Future<void> getRoundActivity({
+  Future<BetEntity> placeBet({
     required String userId,
-    required String pog,
+    required String pogPath,
     required double betAmount,
-    required double userBalance,
-  }) async {}
+  }) async {
+    return BetEntity(userId: userId, pogPath: pogPath, betAmount: betAmount);
+  }
 
   @override
-  Future<void> saveRound(Arena arena) async {}
+  Future<List<ArenaModel>> getRoundActivity() async {
+    return [];
+  }
+
+  @override
+  Future<void> saveRound(ArenaEntity arena) async {}
 }
 
 // should include whether the pog is facing front or back here

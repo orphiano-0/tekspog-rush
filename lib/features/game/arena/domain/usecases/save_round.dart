@@ -1,12 +1,12 @@
-import 'package:tekspogs/features/game/arena/domain/entity/arena.dart';
+import 'package:tekspogs/features/game/arena/domain/entity/arena_entity.dart';
 import 'package:tekspogs/features/game/arena/domain/repositories/arena_repository.dart';
 
-class SaveRound {
+class SaveRoundUsecase {
   final ArenaRepository arenaRepository;
 
-  SaveRound(this.arenaRepository);
+  SaveRoundUsecase(this.arenaRepository);
 
-  Future<void> execute(Arena arena) async {
-    return await arenaRepository.saveRound(arena);
+  Future<ArenaEntity> execute() async {
+    return await arenaRepository.saveRound();
   }
 }

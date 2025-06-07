@@ -1,6 +1,6 @@
 name: tekspogs
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 
 version: 1.0.0+1
@@ -24,16 +24,16 @@ dependencies:
   countup: ^0.1.4
   lottie: ^3.3.1
   syncfusion_flutter_charts: ^29.2.4
-  floor: ^1.5.0
   dartz: ^0.10.1
   flutter_secure_storage: ^9.2.4
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  floor_generator: ^1.5.0
-  build_runner: ^2.4.6
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.5
 
 flutter:
 
@@ -43,6 +43,8 @@ flutter:
   
   assets:
     - assets/app/
+    - assets/app/game_mode/
+    - assets/app/game_results/
     - assets/images/chips/
     - assets/images/betting_chips/
     - assets/images/

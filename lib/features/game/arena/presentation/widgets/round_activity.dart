@@ -17,32 +17,25 @@ class RoundActivity extends StatefulWidget {
 }
 
 class _RoundActivityState extends State<RoundActivity>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   final int _pogCount = 3;
 
   late List<bool> _isSelected;
 
-  late AnimationController _controller;
-
-  late List<Animation<double>> _bounceAnimations;
-
   late List<AnimationController> _scaleControllers;
   late List<Animation<double>> _scaleAnimations;
+
+  final List<String> _pogImages = [
+    'assets/images/pogs/bayanihan_pog.png',
+    'assets/images/pogs/tarsier_pog.png',
+    'assets/images/pogs/jeep_pog.png',
+  ];
 
   @override
   void initState() {
     super.initState();
 
     _isSelected = List<bool>.filled(_pogCount, false);
-
-    _bounceAnimations = List.generate(_pogCount, (index) {
-      return Tween<double>(begin: 0.0, end: 10.0).animate(
-        CurvedAnimation(
-          parent: _controller,
-          curve: Interval(0.8, 1.0, curve: Curves.bounceOut),
-        ),
-      );
-    });
 
     _scaleControllers = List.generate(_pogCount, (_) {
       return AnimationController(
@@ -60,88 +53,81 @@ class _RoundActivityState extends State<RoundActivity>
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    for (var controller in _scaleControllers) {
+      controller.dispose();
+    }
+
+    super.dispose();
+  }
+
+  Widget _buildPog(int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          for (int i = 0; i < _pogCount; i++) {
+            _isSelected[i] = i == index;
+            if (_isSelected[i]) {
+              _scaleControllers[i].forward(from: 0.0);
+            } else {
+              _scaleControllers[i].reset();
+            }
+          }
+        });
+      },
+      child: ScaleTransition(
+        scale: _scaleAnimations[index],
+        child: Container(
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border:
+                _isSelected[index]
+                    ? Border.all(color: Colors.black, width: 1)
+                    : null,
+          ),
+          child: Image.asset(
+            _pogImages[index],
+            height: _isSelected[index] ? 28 : 25,
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-Widget roundActivity(
-  BuildContext context,
-  double betAmount,
-  double userBalance,
-  double totalBet,
-) {
-  return Container(
-    width: MediaQuery.of(context).size.width * 0.85,
-    height: MediaQuery.of(context).size.height * 0.25,
-    padding: const EdgeInsets.all(16),
-    margin: const EdgeInsets.symmetric(vertical: 10),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      // color: Colors.transparent,
-      gradient: const LinearGradient(
-        colors: [Color(0xFF3C1053), Color(0xFFAD5389)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.30,
+      height: MediaQuery.of(context).size.height * 0.13,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(width: 1),
       ),
-      // boxShadow: [
-      //   BoxShadow(
-      //     color: const Color.fromARGB(255, 121, 121, 121).withOpacity(0.2),
-      //     blurRadius: 8,
-      //     offset: const Offset(0, 4),
-      //   ),
-      // ],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 16),
-        Center(
-          child: Row(
+      child: Column(
+        children: [
+          const SizedBox(height: 12),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/pogs/bayanihan_pog.png', height: 80),
-              const SizedBox(width: 20),
-              Image.asset('assets/images/pogs/tarsier_pog.png', height: 80),
-              const SizedBox(width: 20),
-              Image.asset('assets/images/pogs/jeep_pog.png', height: 80),
-            ],
+            children: List.generate(_pogCount, _buildPog),
           ),
-        ),
-        const SizedBox(height: 20),
-        // Text(
-        //   'Bet Amount: ₱${betAmount.toStringAsFixed(2)}',
-        //   style: const TextStyle(
-        //     fontFamily: 'Geologica',
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 14,
-        //     color: Colors.white,
-        //   ),
-        // ),
-        Text(
-          'Total Bet: ₱${totalBet.toStringAsFixed(2)}',
-          style: const TextStyle(
-            fontFamily: 'Geologica',
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-            color: Colors.white,
+          const SizedBox(height: 5),
+          Text(
+            'Total Bet: ₱${widget.totalBet.toStringAsFixed(2)}',
+            style: const TextStyle(
+              fontFamily: 'Geologica',
+              fontWeight: FontWeight.bold,
+              fontSize: 8,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Divider(color: Colors.white, thickness: .5),
-        const SizedBox(height: 8),
-        Text(
-          'User Balance: ₱${userBalance.toStringAsFixed(2)}',
-          style: const TextStyle(
-            fontFamily: 'Geologica',
-            fontSize: 14,
-            color: Colors.white,
+          const SizedBox(height: 10),
+          Text(
+            'User Balance: ₱${widget.userBalance.toStringAsFixed(2)}',
+            style: const TextStyle(fontFamily: 'Geologica', fontSize: 8),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

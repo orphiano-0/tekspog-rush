@@ -52,10 +52,10 @@ class HomePage extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Colors.white),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(3),
                     ),
                     child: Image.asset(
-                      'assets/images/game_mode/arena.png',
+                      'assets/app/game_mode/arena_game.png',
                       height: 200,
                     ),
                   ),
@@ -68,10 +68,10 @@ class HomePage extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Colors.white),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(3),
                     ),
                     child: Image.asset(
-                      'assets/images/game_mode/friendly.png',
+                      'assets/app/game_mode/friendly_game.png',
                       height: 200,
                     ),
                   ),
